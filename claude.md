@@ -4,7 +4,7 @@ You MUST keep this file up to date as the project evolves.
 When you implement or change behavior, update the "Status" + "Behavior Spec" sections first.
 -->
 
-## Project: Migouda AI (email-based assistant)
+## Project: InboxPilot (email-based assistant)
 
 This repo is an **email-based assistant**. A dedicated assistant inbox receives **forwarded/transfered emails** from the user's personal account (or other trusted senders). When a new email arrives, the system should handle predefined request types (translation, summarization, etc.) while treating all inbound content as **untrusted** (prompt-injection safe).
 
