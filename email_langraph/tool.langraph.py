@@ -12,11 +12,14 @@ from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from email_langraph.attachment_filter import is_translatable_source_attachment
+
 load_dotenv()
 
 PUSHOVER_URL = "https://api.pushover.net/1/messages.json"
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 AI_INBOX_ROOT = PROJECT_ROOT / "ai_inbox"
+DOWNLOADS_ROOT = PROJECT_ROOT / "downloads"
 
 
 def _fs_safe_segment(segment: str) -> str:
@@ -87,5 +90,25 @@ def write_inbox_summary_md(thread_id: str, message_id: str, summary: str) -> str
     return str(path)
 
 
+@tool
+def check_for_attachments(thread_id: str, message_id: str) -> list[str]:
+    """List translatable source attachments in downloads/<thread_id>/ (excludes system outputs)."""
+    del message_id  # downloads are stored per thread
+    t = _fs_safe_segment(thread_id)
+    target_dir = DOWNLOADS_ROOT / t
+    if not target_dir.exists():
+        return []
+    return [
+        str(f)
+        for f in target_dir.iterdir()
+        if f.is_file() and is_translatable_source_attachment(f)
+    ]
+
+
 def all_tools():
-    return [summarise_email, notify_trusted_email_received, write_inbox_summary_md]
+    return [
+        summarise_email,
+        notify_trusted_email_received,
+        write_inbox_summary_md,
+        check_for_attachments,
+    ]

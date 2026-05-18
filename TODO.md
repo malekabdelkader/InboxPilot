@@ -4,8 +4,9 @@ This file tracks implementation work and technical cleanup tasks.
 
 ## Priority 0 - Foundations
 
-- [ ] Enforce English-first policy across all outputs (summaries, translations, notifications).
+- [x] Enforce English-first policy across all outputs (summaries, translations, notifications).
 - [ ] Implement prompt-injection safety policy for untrusted email/body/attachment content.
+- [ ] Implement prompt-injection safety policy for untrusted email/body/attachment content. (Check if this has been addressed in the project)
 - [ ] Add processing ledger to detect already processed `message_id` and prevent duplicate execution.
 - [ ] Add thread-level memory to skip already translated files and process only new files.
 
