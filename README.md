@@ -22,29 +22,42 @@ The LangGraph pipeline follows these steps:
 2. **Notify**: A notification is dispatched via Pushover.
 3. **Write**: The generated summary is persisted to the file system for long-term tracking.
 
-## Prerequisites
+### Prerequisites
 
 - Python 3.11+
 - OpenAI API Key
 - Pushover User Key and API Token (for notifications)
+- Google Cloud Project with Gmail API enabled
+- Google OAuth2 Credentials (`credentials.json`) with Gmail read access
 
+````
+
+### 2. Update the "Setup" section:
+
+```markdown
 ## Setup
 
 1. Clone the repository.
 2. Install dependencies:
    ```bash
    uv sync
-   ```
+````
+
 3. Configure your environment variables in a `.env` file:
    ```env
    OPENAI_API_KEY=your_openai_key
    PUSHOVER_USER=your_pushover_user_key
    PUSHOVER_TOKEN=your_pushover_api_token
    ```
-4. Configure google.oauth2.credentials
-    * Follow instructions to create oauth2 creds : https://docs.cloud.google.com/sdk/docs/overview
-    * Project requires credentials.json file
-6. Run:
+4. **Google OAuth2 Configuration**:
+   - Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   - Create a new project (or select an existing one).
+   - Enable the **Gmail API**.
+   - Configure the **OAuth consent screen** (set user type to 'External' and add your email as a test user).
+   - Navigate to **Credentials** -> **Create Credentials** -> **OAuth client ID**.
+   - Select **Web App** as the application type.
+   - Download the JSON content and save it as `credentials.json` in the root directory of this project.
+5. Run:
    ```bash
    uv run main.py
    ```
