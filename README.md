@@ -33,11 +33,18 @@ The LangGraph pipeline follows these steps:
 1. Clone the repository.
 2. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   uv sync
    ```
 3. Configure your environment variables in a `.env` file:
    ```env
    OPENAI_API_KEY=your_openai_key
    PUSHOVER_USER=your_pushover_user_key
    PUSHOVER_TOKEN=your_pushover_api_token
+   ```
+4. Configure google.oauth2.credentials
+    * Follow instructions to create oauth2 creds : https://docs.cloud.google.com/sdk/docs/overview
+    * Project requires credentials.json file
+6. Run:
+   ```bash
+   uv run main.py
    ```
