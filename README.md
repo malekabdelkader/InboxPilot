@@ -30,19 +30,12 @@ The LangGraph pipeline follows these steps:
 - Google Cloud Project with Gmail API enabled
 - Google OAuth2 Credentials (`credentials.json`) with Gmail read access
 
-````
-
-### 2. Update the "Setup" section:
-
-```markdown
 ## Setup
 
 1. Clone the repository.
 2. Install dependencies:
    ```bash
    uv sync
-````
-
 3. Configure your environment variables in a `.env` file:
    ```env
    OPENAI_API_KEY=your_openai_key
