@@ -22,7 +22,7 @@ from reportlab.pdfgen import canvas
 
 from email_langraph.attachment_filter import is_translatable_source_attachment
 from email_langraph.chat_models import get_model_for_task
-from src.security.injection_detector import InjectionDetector
+from security.injection_detector import InjectionDetector
 
 load_dotenv()
 
