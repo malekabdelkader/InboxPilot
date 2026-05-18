@@ -1,6 +1,6 @@
 # Email LangGraph Pipeline
 
-An automated email processing pipeline built with LangGraph, designed to summarize incoming emails from trusted senders and notify you via Pushover.
+An automated email processing pipeline built with LangGraph, designed to process (translate,summarise,store attachements) incoming emails from trusted senders.
 
 ## Overview
 
