@@ -27,7 +27,7 @@ from security.injection_detector import InjectionDetector
 load_dotenv()
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
-MAX_PDF_PAGES = 10
+MAX_PDF_PAGES = 20
 
 _run_trusted_email_pipeline = None
 
@@ -157,7 +157,7 @@ def _translate_text_to_english(text: str, file_name: str) -> str:
 
     # Security check for prompt injection
     detector = InjectionDetector()
-    if detector.analyze(text):
+    if detector.is_malicious(text):
         raise ValueError(
             f"Potential prompt injection detected in attachment: {file_name}")
 
